@@ -18,7 +18,7 @@ enum DStackStatus push(DStack* dstack, int info) {
     }
     
     DNode* new_top = (DNode*) malloc(sizeof(DNode));
-    if (new_top) {
+    if (new_top == NULL) {
         return NODE_NULL;
     }
     
@@ -35,7 +35,7 @@ int pop(DStack* dstack) {
         return STACK_NULL;
     }
     
-    if (dstack->top != NULL) {
+    if (dstack->top == NULL) {
         return STACK_EMPTY;
     }
     
@@ -53,7 +53,7 @@ int top(DStack* dstack) {
         return STACK_NULL;
     }
     
-    if (dstack->top != NULL) {
+    if (dstack->top == NULL) {
         return STACK_EMPTY;
     }
     
