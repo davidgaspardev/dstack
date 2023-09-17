@@ -15,7 +15,7 @@ int main() {
         }
     }
     
-    printf("TOP: %d\n", top(dstack));
+    printf("TOP: %d\n", peek(dstack));
     
     while(dstack->size > 0) {
         printf("%d \n", pop(dstack));

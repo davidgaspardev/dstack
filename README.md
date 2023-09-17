@@ -56,7 +56,7 @@ make clean
 - `DStack* create_dstack()`: Creates a new empty stack.
 - `enum DStackStatus push(DStack* dstack, int info)`: Pushes a value onto the stack.
 - `int pop(DStack* dstack)`: Pops a value from the stack.
-- `int top(DStack* dstack)`: Peeks at the top value without popping.
+- `int peek(DStack* dstack)`: Peeks at the top value without popping.
 - `int size(DStack* dstack)`: Returns the current size of the stack.
 - `bool is_empty(DStack* dstack)`: Checks if the stack is empty.
 - `enum DStackStatus destroy(DStack* dstack)`: Deallocates the stack and its contents.

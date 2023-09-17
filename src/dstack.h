@@ -24,7 +24,7 @@ enum DStackStatus {
 DStack* create_dstack();
 enum DStackStatus push(DStack* dstack, int info);
 int pop(DStack* dstack);
-int top(DStack* dstack);
+int peek(DStack* dstack);
 int size(DStack* dstack);
 bool is_empty(DStack* dstack);
 enum DStackStatus destroy(DStack* dstack);

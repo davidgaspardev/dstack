@@ -48,7 +48,7 @@ int pop(DStack* dstack) {
     return old_info;
 }
 
-int top(DStack* dstack) {
+int peek(DStack* dstack) {
     if (dstack == NULL) {
         return STACK_NULL;
     }
