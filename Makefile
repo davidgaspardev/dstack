@@ -10,17 +10,23 @@ TEST_DIRECTORY = test
 SRC_DIRECTORY = src
 OBJ_DIRECTORY = obj
 BIN_DIRECTORY = bin
+LIB_DIRECTORY = lib
 
 # Temporary directories
 TMP_DIRECTORIES =    \
 	$(OBJ_DIRECTORY) \
-	$(BIN_DIRECTORY)
+	$(BIN_DIRECTORY) \
+	$(LIB_DIRECTORY)
 
 $(OBJ_DIRECTORY):
 	@mkdir $@
 	@echo "[ + ] Directory created: $@"
 
 $(BIN_DIRECTORY):
+	@mkdir $@
+	@echo "[ + ] Directory created: $@"
+
+$(LIB_DIRECTORY):
 	@mkdir $@
 	@echo "[ + ] Directory created: $@"
 
@@ -34,11 +40,15 @@ $(OBJ_DIRECTORY)/%.o: $(OBJ_DIRECTORY) $(SRC_DIRECTORY)/%.c
 
 .PHONY: show build
 
-test: $(BIN_DIRECTORY) build
-	@$(CC) $(CINCLUDES) $(TEST_DIRECTORY)/dstack.c -o $(BIN_DIRECTORY)/$@ $(OBJECTS)
-
 build: $(OBJECTS)
 	@echo "[ + ] BUILDED"
+
+library: $(LIB_DIRECTORY) build
+	@ar -rc $(LIB_DIRECTORY)/lib$(NAME).a $(OBJ_DIRECTORY)/$(NAME).o
+	@echo "[ + ] Static library created: lib$(NAME).a"
+
+test: $(BIN_DIRECTORY) build
+	@$(CC) $(CINCLUDES) $(TEST_DIRECTORY)/dstack.c -o $(BIN_DIRECTORY)/$@ $(OBJECTS)
 
 show:
 	@echo "[ + ] Show variable from Makefile:"
